@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CMS</title>
     @vite('resources/css/app.css')
+    <script src="https://kit.fontawesome.com/eb33044df0.js" crossorigin="anonymous"></script>
 </head>
 <body>
 

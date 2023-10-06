@@ -22,7 +22,7 @@ class AdminMiddleware
             if(Auth::user()->usertype == '2'){
                 return $next($request);
             }else{
-                return redirect('/');
+                return redirect('/login');
             }
         }else{
             return redirect('/login');

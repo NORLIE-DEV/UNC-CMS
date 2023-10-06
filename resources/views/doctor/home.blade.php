@@ -8,6 +8,9 @@
 </head>
 <body>
     <h1>DOCTOR{{auth()->user()->name}}</h1>
-
+    <form action="/doctor/logout" method="post">
+        @csrf
+        <button type="submit">LOGOUT</button>
+    </form>
 </body>
 </html>

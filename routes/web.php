@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\NurseController;
+use App\Http\Controllers\DoctorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +18,6 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/login/process', [UserController::class, 'process']);
@@ -32,11 +31,13 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
 // DOCTOR
 Route::middleware(['auth', 'is_doctor'])->group(function () {
     Route::get('doctor/home', [UserController::class, 'doctorHome'])->name('doctor.home');
+    Route::post('doctor/logout', [DoctorController::class, 'logout']);
 });
 
 // NURSE
 Route::middleware(['auth', 'is_nurse'])->group(function () {
     Route::get('nurse/home', [UserController::class, 'nurseHome'])->name('nurse.home');
+    Route::post('nurse/logout',[NurseController::class, 'logout']);
 });
 
 

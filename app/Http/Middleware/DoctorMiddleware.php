@@ -20,7 +20,7 @@ class DoctorMiddleware
             if(Auth::user()->usertype == '0'){
                 return $next($request);
             }else{
-                return redirect('/')->with('error', "Access denied");
+                return redirect('/login')->with('error', "Access denied");
             }
         }else{
             return redirect('/login');
