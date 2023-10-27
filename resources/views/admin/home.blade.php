@@ -1,134 +1,150 @@
 @include('partials.__header')
-
-<div class="flex flex-row">
+<x-messages />
+<div class="flex">
     <!-- left content -->
-    <div class="bg-white h-screen w-60 shadow-2xl">
-      <h1 class=" font-black text-2xl text-center p-5 text-gray-700 mt-6"><span class="p-1"><i class="fa-solid fa-hospital"></span></i>UNC-CMS</h1>
-      <hr>
-       <div class="p-7">
-        <ul class="p-2 leading-loose">
-
-            <li class="p-2 bg-slate-800 text-white rounded-lg font-bold"><span class="px-3"><i class="fa-brands fa-dropbox"></i></span>Overview </a></li>
-            <li class="p-2 mt-4"><a href="#"><span class="px-3"><i class="fa-solid fa-user"></i></span> Student</a></li>
-            <li class="p-2 mt-4"><a href="#"><span class="px-3"><i class="fa-solid fa-person-digging"></i></span>Employee</a></li>
-            <li class="p-2 mt-4"><a href="#"><span class="px-3"><i class="fa-solid fa-users"></i></span>User Account</a></li>
-            <li class="p-2 mt-4"><a href="#"><span class="px-3"><i class="fa-solid fa-gear"></i></span>Setting</a></li>
-            {{-- <li class="p-2 mt-4"><a href="#"><span class="px-3"><i class="fa-solid fa-right-from-bracket"></i></span>Sign out</a></li> --}}
-             <form action="/admin/logout" method="POST">
-                @csrf
-                <button type="submit" class="p-2 mt-4"><span class="px-3"><i class="fa-solid fa-right-from-bracket"></span></i>Sign out</button>
-             </form>
-        </ul>
-       </div>
-    </div>
+    @include('components.sidebar')
     <!-- right content -->
     <div class="w-10/12">
-      <nav class="p-5 grid grid-cols-3 place-items-center">
-        {{-- Username Name --}}
-        <div class="w-80 ">
-            <h1 class="font-bold text-2xl"><span class="mx-1 font-bold text-2xl">Hello</span>{{auth()->user()->name}}👋</h1>
-            <p class="text-gray-400 text-xs mx-1 mt-2">Lorem ipsum dolor sit amet consectetur!</p>
-        </div>
+        @include('components.nav')
+        <!-- main content -->
 
-        {{-- Search --}}
-        <div class="w-96 flex items-center">
-            <input type="text" class="p-2 w-full  border-2 rounded-lg outline-none text-sm text-gray-500" placeholder="Search here..">
-            <form action="">
-                <button type="submit" class="bg-blue-500 p-2 mx-2 w-10 rounded-lg"><span><i class="fa-solid fa-magnifying-glass text-white"></span></i></button>
-            </form>
-        </div>
-
-        {{-- profile image --}}
-        <div class="w-32 flex items-center ml-16 justify-center p-2 rounded-lg">
-            <img src="{{asset('/assets/img/72793650_623034394895427_3607026836418068480_n.jpg')}}" alt="" class="w-10 h-10 rounded-2xl border-2 border-gray-800">
-            <h4 class="mx-2 font-bold text-gray-800">Admin</h4>
-        </div>
-      </nav>
-      <hr>
-      {{-- Content --}}
-      <h3 class="mx-3 p-2 text-gray-500 font-bold">Student</h3>
-      <section class="grid grid-cols-4 place-items-center p-2">
-        <div class="w-60 h-36 bg-blue-400 rounded-lg shadow-2xl">
-         <h4 class="text-white font-bold p-4">Kinder Student</h4>
-         <div class="p-1 ml-3 flex justify-between">
-            <i class="fa-solid fa-school fa-xl text-white"></i>
-            <h1 class="p-1 mr-5 text-white font-black text-4xl">65</h1>
-         </div>
-         <div class="flex justify-between p-1">
-            <h5 class="text-white ml-2 font-bold">Male : <span>65</span></h5>
-            <h5 class="text-white mr-2 font-bold">Female : <span>65</span></h5>
-         </div>
-        </div>
-
-        <div class="w-60 h-36 bg-teal-400 rounded-lg shadow-2xl">
-            <h4 class="text-white font-bold p-4">Elementary Student</h4>
-         <div class="p-1 ml-3 flex justify-between">
-            <i class="fa-solid fa-school fa-xl text-white"></i>
-            <h1 class="p-1 mr-5 text-white font-black text-4xl">65</h1>
-         </div>
-         <div class="flex justify-between p-1">
-            <h5 class="text-white ml-2 font-bold">Male : <span>65</span></h5>
-            <h5 class="text-white mr-2 font-bold">Female : <span>65</span></h5>
-         </div>
-        </div>
-
-        <div class="w-60 h-36 bg-orange-300 rounded-lg shadow-2xl">
-            <h4 class="text-white font-bold p-4">High school Student</h4>
-            <div class="p-1 ml-3 flex justify-between">
-               <i class="fa-solid fa-school fa-xl text-white"></i>
-               <h1 class="p-1 mr-5 text-white font-black text-4xl">65</h1>
+        <div class="flex">
+            <div class="h-60 m-6 shadow-lg rounded-lg"
+                style="background: linear-gradient(-90deg, rgba(2,0,36,1) 0%, rgba(118,184,236,1) 0%, rgba(73,114,255,1) 100%); width:680px">
+                <div class="flex">
+                    <div class="w-1/2">
+                        <img src="{{ asset('assets/img/image_2023-10-16_071401491-removebg-preview.png') }}"
+                            class="w-60 h-60" alt="hero-3">
+                    </div>
+                    <div class="p-10 w-3/4">
+                        <h1 class="text-2xl font-bold text-white"><span class="mx-1">Welcome back
+                            </span>{{ auth()->user()->first_name }}!</h1>
+                        <p class="text-xs p-2 mt-3 text-white">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                            Eveniet illo recusandae earum modi vitae voluptas
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet illo recusandae earum modi
+                            vitae voluptas.</p>
+                    </div>
+                </div>
             </div>
-            <div class="flex justify-between p-1">
-               <h5 class="text-white ml-2 font-bold">Male : <span>65</span></h5>
-               <h5 class="text-white mr-2 font-bold">Female : <span>65</span></h5>
+
+            <div class="h-60 w-72 my-6 bg-white rounded-lg shadow-lg p-5 -z-10" id="piechart">
+
             </div>
         </div>
 
-        <div class="w-60 h-36 bg-red-400 rounded-lg shadow-2xl">
-            <h4 class="text-white font-bold p-4">College Student</h4>
-            <div class="p-1 ml-3 flex justify-between">
-               <i class="fa-solid fa-school fa-xl text-white"></i>
-               <h1 class="p-1 mr-5 text-white font-black text-4xl">65</h1>
+        <div class="flex">
+            <div class="flex flex-col">
+                <div class="flex mx-6 gap-1">
+                    <div class="bg-blue-600 shadow-lg w-56 h-28 rounded-lg flex">
+                        <div class="p-4 mx-2 mt-4 w-1/2">
+                            <img src="{{ asset('assets/img/icon/multiple-users-silhouette.png') }}" class="w-12 h-12"
+                                alt="enroll">
+                        </div>
+                        <div class="w-3/4 text-white font-semibold text-sm">
+                            <h1 class="m-3 mt-4 text-center text-sm font-bold">Users</h1>
+                            <h2 class="text-4xl text-center font-bold">300</h2>
+                        </div>
+                    </div>
+                    <div class="bg-blue-600 shadow-lg w-56 h-28 rounded-lg flex">
+                        <div class="p-4 mx-2 mt-4 w-1/2">
+                            <img src="{{ asset('assets/img/icon/reading-book.png') }}" class="w-12 h-12" alt="enroll">
+                        </div>
+                        <div class="w-3/4 text-white font-semibold text-sm">
+                            <h1 class="m-3 mt-4 text-center text-sm font-bold">Student</h1>
+                            <h2 class="text-4xl text-center font-bold">300</h2>
+                        </div>
+                    </div>
+                    <div class="bg-blue-600 shadow-lg w-56 h-28 rounded-lg flex">
+                        <div class="p-4 mx-2 mt-4 w-1/2">
+                            <img src="{{ asset('assets/img/icon/business-people.png') }}" class="w-12 h-12"
+                                alt="enroll">
+                        </div>
+                        <div class="w-3/4 text-white font-semibold text-sm">
+                            <h1 class="m-3 mt-4 text-center text-sm font-bold">Employee</h1>
+                            <h2 class="text-4xl text-center font-bold">300</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="curve_chart" style="width: 680px; height: 350px" class="absolute -z-10 mx-6 mt-32"></div>
+
             </div>
-            <div class="flex justify-between p-1">
-               <h5 class="text-white ml-2 font-bold">Male : <span>65</span></h5>
-               <h5 class="text-white mr-2 font-bold">Female : <span>65</span></h5>
+
+            <div class="bg-blue-500 rounded-lg shadow-2xl" style="height:485px; width:290px;">
+                <h5 class="m-4 p-2 text-white rounded-lg text-center font-bold text-xl">Summary</h5>
+                <div class="mx-4 bg-blue-500 p-2 shadow-lg rounded-lg my-2">
+                    <h1 class="text-white">Kinder and Pre-school <span class="mx-5">615</span></h1>
+                </div>
+                <div class="mx-4 bg-blue-500 p-2 shadow-lg rounded-lg  my-2">
+                    <h1 class="text-white">Kinder and Pre-school <span class="mx-5">615</span></h1>
+                </div>
+                <div class="mx-4 bg-blue-500 p-2 shadow-lg rounded-lg  my-2">
+                    <h1 class="text-white">Kinder and Pre-school <span class="mx-5">615</span></h1>
+                </div>
+                <div class="mx-4 bg-blue-500 p-2 shadow-lg rounded-lg  my-2">
+                    <h1 class="text-white">Kinder and Pre-school <span class="mx-5">615</span></h1>
+                </div>
+                <div class="mx-4 bg-blue-500 p-2 shadow-lg rounded-lg  my-2">
+                    <h1 class="text-white">Kinder and Pre-school <span class="mx-5">615</span></h1>
+                </div>
+                <div class="mx-4 bg-blue-500 p-2 shadow-lg rounded-lg  my-2">
+                    <h1 class="text-white">Kinder and Pre-school <span class="mx-5">615</span></h1>
+                </div>
             </div>
         </div>
-    </section>
-    <h3 class="mx-3 p-2 text-gray-500 font-bold">College Departments</h3>
-    <section class="grid grid-cols-4 place-items-center p-2 gap-y-3">
-        <div class="w-60 h-28 bg-violet-400 rounded-lg shadow-2xl">
-            <h4 class="text-white font-bold p-2">College Of Engineering And Architecture.</h4>
-            <div class="p-1 ml-1 flex justify-between">
-                <i class="fa-solid fa-school fa-xl text-white"></i>
-                <h1 class=" mr-5 text-white font-black text-4xl">65</h1>
-             </div>
-        </div>
+    </div>
 
-        <div class="w-60 h-36 bg-sky-300 rounded-lg shadow-2xl">
-            <h3>Elementary</h3>
-        </div>
-
-        <div class="w-60 h-28 bg-rose-300 rounded-lg shadow-2xl">
-            <h3>Elementary</h3>
-        </div>
-
-        <div class="w-60 h-28 bg-yellow-200 rounded-lg shadow-2xl">
-            <h3>Elementary</h3>
-        </div>
-
-        <div class="w-60 h-28 bg-sky-300 rounded-lg shadow-2xl">
-            <h3>Elementary</h3>
-        </div>
-
-        <div class="w-60 h-28 bg-rose-300 rounded-lg shadow-2xl">
-            <h3>Elementary</h3>
-        </div>
-
-        <div class="w-60 h-28 bg-yellow-200 rounded-lg shadow-2xl ">
-            <h3>Elementary</h3>
-        </div>
-    </section>
 </div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {
+        'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Gender', 'Male', 'Female'],
+            ['2004', 1000, 400],
+            ['2005', 22, 460],
+            ['2006', 660, 1120],
+            ['2007', 1030, 540]
+        ]);
+
+        var options = {
+            title: 'Gender',
+            curveType: 'function',
+            legend: {
+                position: 'bottom'
+            }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+    }
+
+    google.charts.setOnLoadCallback(drawChart1);
+
+    function drawChart1() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['Work', 11],
+            ['Eat', 2],
+            ['Commute', 2],
+            ['Watch TV', 2],
+            ['Sleep', 7]
+        ]);
+
+        var options = {
+            title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+    }
+</script>
 @include('partials.__footer')
